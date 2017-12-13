@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SinkTheFloatServlet">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="SinkTheFloatServlet"/>
+        <property name="java-output-path" value="/SinkTheFloatServlet/build/classes"/>
+    </wb-module>
+</project-modules>
