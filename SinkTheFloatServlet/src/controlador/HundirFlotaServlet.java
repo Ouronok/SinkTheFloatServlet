@@ -30,13 +30,22 @@ public class HundirFlotaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		if(session.getAttribute("partida") == null) {
+		Partida partida = (Partida) session.getAttribute("partida");
+		if(partida == null) {
 			session.setAttribute("partida", new Partida(8,8,6));
+			partida = (Partida) session.getAttribute("partida");
 		}
+		
+		String[] casilla = request.getParameter("casilla").split("#");
+		int fila = Integer.parseInt(casilla[0]);
+		int columna = Integer.parseInt(casilla[1]);
+		partida.pruebaCasilla(fila, columna);
+		
+		
 		
 		response.setContentType("text/html;charset=UTF-8");
 		
-		RequestDispatcher vista = request.getRequestDispatcher("Partida.jsp");
+		RequestDispatcher vista = request.getRequestDispatcher("TableroActual.jsp");
 		vista.forward(request, response);
 	}
 

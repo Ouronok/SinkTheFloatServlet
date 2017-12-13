@@ -110,6 +110,10 @@ public class Partida {
 	public int getRestantes() {
 		return quedan;
 	}
+	
+	public int getTotales() {
+		return numBarcos;
+	}
 
 
 
