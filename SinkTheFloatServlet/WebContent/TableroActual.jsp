@@ -11,12 +11,82 @@
 <h1>Hundir la Flota</h1><br>
 
 <%
-	Partida partida = (Partida) request.getAttribute("partida");
+
+	Partida partida = (Partida) session.getAttribute("partida");
+	boolean over = false;
 	if(partida.getDisparos()==0){
-		out.println("NUEVA PARTIDA");
-		out.println("Barcos navegando: "+partida.getRestantes()+ " Barcos hundidos: "+(partida.getTotales()-partida.getRestantes()));
-		out.println("Numero disparos efectuados: "+partida.getDisparos());
-	} else 
+		out.println("<p>NUEVA PARTIDA</p>");
+		
+	} else if (partida.getRestantes()==0){
+		out.println("<p>GAME OVER</p>");
+		over = true;
+	} else {
+		int fila = (int) request.getAttribute("fila");
+		int columna = (int) request.getAttribute("columna");
+		if((boolean) request.getAttribute("disparada")){
+			out.println("<p>Ya habia sido disparada anteriormente</p>");
+		} else {
+			out.println("<p>Pagina del disparo en("+(fila+1)+","+(columna+1)+"): Ok!</p>");
+		}
+		
+	}
+	out.println("<p>Barcos navegando: "+partida.getRestantes()+"<p>");
+	out.println("<p>Barcos hundidos: "+ (partida.getTotales()-partida.getRestantes())+"</p>");
+	out.println("<p>Numero de disparos efectuados: "+partida.getDisparos()+"</p>");
+	
+    
+   String[] tamano = partida.getTamanoPartida().split("#");
+   int nf = Integer.parseInt(tamano[0]);
+   int nc = Integer.parseInt(tamano[1]);
+    
+	out.println("<form action='HundirFlotaServlet' method='GET'>");
+	out.println("<table id='taula'>");
+	out.println("<tr>");
+	char letra = 'A';
+	out.println("<th></th>");
+	for (int i = 0; i < nc; i++) {
+		out.println("<th>"+letra+"</th>");
+		letra++;
+	}
+    for (int i = 0; i < nf; i++) {
+    	out.println("<tr>");
+    	out.println("<th>"+(i+1)+"</th>");
+    	for(int n=0; n<nc;n++){
+    		String valor = i+"#"+n;
+    		
+    		String color;
+    		if(partida.casillaDisparada(i, n)){
+	    		int res = partida.getCasilla(i, n);
+	    		switch (res){
+	    		case(-1):
+	    			color = "blue";
+	    			break;
+	    		case(-2):
+	    			color = "orange";
+	    			break;
+	    		default:
+	    			color = "red";
+	    			break;
+	    		}
+    		} else{
+    			color = "LightGray";
+    		}
+    		out.println("<th style='background-color:"+color+"'><input type='radio' name='casilla' value='"+valor+"'></th>");
+    	}
+    	out.println("</tr>");
+    	
+    
+    }
+    out.println("</table>");
+    if(!over)
+    	out.println("<input type='submit' name='Enviar' value='Enviar'>");
+    out.println("</form>");
+    out.println("<br><br><br>");
+    out.println("<a href='SolucionPartidaServlet'>Solucion Partida</a>");
+    out.println("<a href='NuevaPartidaServlet'>Nueva partida</a>");
+    out.println("<a href='SalirPartidaServlet'>Salir partida</a>");    
+    
+
 
 
 %>

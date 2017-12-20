@@ -53,6 +53,7 @@ public class Partida {
 	 */	
 	public int pruebaCasilla(int f, int c) { // Cambia estado casilla y devuelve
 		misDisparos[f][c] = true;
+		disparos++;
 		if (mar[f][c] <0 ) { // Comprobamos si hay agua, tocado o hundido
 			return mar[f][c];
 		}
@@ -113,6 +114,9 @@ public class Partida {
 	
 	public int getTotales() {
 		return numBarcos;
+	}
+	public String getTamanoPartida() {
+		return this.numFilas+"#"+this.numColumnas;
 	}
 
 

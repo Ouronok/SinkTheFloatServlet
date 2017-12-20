@@ -29,22 +29,34 @@ public class HundirFlotaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession(true);
 		Partida partida = (Partida) session.getAttribute("partida");
 		if(partida == null) {
-			session.setAttribute("partida", new Partida(8,8,6));
-			partida = (Partida) session.getAttribute("partida");
+			 partida = new Partida(8,8,6);
+			 System.out.println("Partida creada");
+		} else {
+			System.out.println("Casilla pulsada");
+			
+			String[] casilla = request.getParameter("casilla").split("#");
+			System.out.println(casilla);
+			int fila = Integer.parseInt(casilla[0]);
+			int columna = Integer.parseInt(casilla[1]);
+			if(partida.casillaDisparada(fila, columna)) {
+				request.setAttribute("disparada", true);
+			} else {
+				request.setAttribute("disparada", false);
+				int res = partida.pruebaCasilla(fila, columna);
+				System.out.println(res);
+				
+				
+			}
+			request.setAttribute("fila", fila);
+			request.setAttribute("columna", columna);
+			
+			
 		}
-		
-		String[] casilla = request.getParameter("casilla").split("#");
-		int fila = Integer.parseInt(casilla[0]);
-		int columna = Integer.parseInt(casilla[1]);
-		partida.pruebaCasilla(fila, columna);
-		
-		
-		
-		response.setContentType("text/html;charset=UTF-8");
-		
+		session.setAttribute("partida", partida);
 		RequestDispatcher vista = request.getRequestDispatcher("TableroActual.jsp");
 		vista.forward(request, response);
 	}
