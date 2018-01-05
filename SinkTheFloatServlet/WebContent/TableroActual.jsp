@@ -9,11 +9,14 @@
 </head>
 <style>
 	table#taula{
-		height:100%;
-		width:100%;
+		height:auto;
+		width:60%;
+
+
 	} 
 	div{
 		text-align: center;
+
 	
 	}</style>
 <body>

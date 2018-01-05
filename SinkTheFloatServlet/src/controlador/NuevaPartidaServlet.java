@@ -30,7 +30,7 @@ public class NuevaPartidaServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession(false);
 		session.invalidate();
-		RequestDispatcher rd = request.getRequestDispatcher("HundirFlotaServer");
+		RequestDispatcher rd = request.getRequestDispatcher("HundirFlotaServlet");
 		rd.forward(request,response);
 	}
 
