@@ -7,6 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<style>
+	table#taula{
+		height:100%;
+		width:100%;
+	} 
+	div{
+		text-align: center;
+	
+	}</style>
 <body>
 <h1>Hundir la Flota</h1><br>
 
@@ -30,8 +39,8 @@
 		}
 		
 	}
-	out.println("<p>Barcos navegando: "+partida.getRestantes()+"<p>");
-	out.println("<p>Barcos hundidos: "+ (partida.getTotales()-partida.getRestantes())+"</p>");
+	out.println("<p>Barcos navegando:  " +partida.getRestantes()+ " Barcos hundidos: "+ (partida.getTotales()-partida.getRestantes())+"<p>");
+	
 	out.println("<p>Numero de disparos efectuados: "+partida.getDisparos()+"</p>");
 	
     
@@ -69,7 +78,7 @@
 	    			break;
 	    		}
     		} else{
-    			color = "LightGray";
+    			color = "White";
     		}
     		out.println("<th style='background-color:"+color+"'><input type='radio' name='casilla' value='"+valor+"'></th>");
     	}
@@ -79,12 +88,14 @@
     }
     out.println("</table>");
     if(!over)
-    	out.println("<input type='submit' name='Enviar' value='Enviar'>");
+    	out.println("<div>");
+    	out.println("<input type='submit' name='Enviar' value='Submit'>");
+    	out.println("</div>");
     out.println("</form>");
     out.println("<br><br><br>");
-    out.println("<a href='SolucionPartidaServlet'>Solucion Partida</a>");
-    out.println("<a href='NuevaPartidaServlet'>Nueva partida</a>");
-    out.println("<a href='SalirPartidaServlet'>Salir partida</a>");    
+    out.println("<p><a href='SolucionPartidaServlet'>Mostrar Solucion</a></p>");
+    out.println("<p><a href='NuevaPartidaServlet'>Nueva partida</a></p>");
+    out.println("<p><a href='SalirPartidaServlet'>Salir partida</a></p>");    
     
 
 

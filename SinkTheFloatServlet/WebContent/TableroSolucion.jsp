@@ -5,9 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Solucion Partida</title>
+<title>Game Over</title>
 </head>
+<style>
+	table#taula{
+		height:100%;
+		width:100%;
+	} </style>
 <body>
+<h1>Hundir la Flota</h1><br>
 
 <% 
 		Partida partida = (Partida) session.getAttribute("partida");
@@ -44,6 +50,9 @@
 		    
 		    }
 		    out.println("</table>");
+		    
+		    out.println("<p><a href='NuevaPartidaServlet'>Nueva partida</a></p>");
+		    out.println("<p><a href='SalirPartidaServlet'>Salir partida </a></p>"); 
 	
 	%>
 </body>
