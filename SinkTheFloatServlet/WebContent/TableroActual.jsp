@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-	<style>
+<title>Partida de hundir la flota</title>
+
+<style>
 		table{
 			text-align:center;
 			align:center;
@@ -19,11 +19,13 @@
 		div{
 			margin-left: 200px;
 		}
-	</style>
+</style>
+</head>
 <body>
 <h1>Hundir la Flota</h1><br>
 
 <%
+
 
 	Partida partida = (Partida) session.getAttribute("partida");
 	boolean over = false;
@@ -42,7 +44,7 @@
 		} else if (fila==-1 && columna==-1){
 		    out.print("<p>Selecciona una casilla valida</p>");
 		} else {
-			out.println("<p>Pagina del disparo en("+(fila+1)+","+(columna+1)+"): Ok!</p>");
+			out.println("<p>Pagina del disparo en("+(fila+1)+","+(partida.getCharForNumber(columna+1))+"): Ok!</p>");
 		}
 		
 	}

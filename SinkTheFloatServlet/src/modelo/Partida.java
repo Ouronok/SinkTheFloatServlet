@@ -257,4 +257,8 @@ public class Partida {
         return resultado;
     }
 
+	public String getCharForNumber(int i) { //Convierte un numero en la letra correspondiente del tablero
+		return i > 0 && i < 27 ? String.valueOf((char)(i + 'A' - 1)) : null;
+	}
+
 } // end class Partida
