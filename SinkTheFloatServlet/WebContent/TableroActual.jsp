@@ -9,8 +9,9 @@
 </head>
 <style>
 	table#taula{
-		height:auto;
-		width:60%;
+		height:60%;
+		width:40%;
+		border-collapse: collapse;
 
 
 	} 
@@ -35,8 +36,11 @@
 	} else {
 		int fila = (int) request.getAttribute("fila");
 		int columna = (int) request.getAttribute("columna");
+
 		if((boolean) request.getAttribute("disparada")){
 			out.println("<p>Ya habia sido disparada anteriormente</p>");
+		} else if (fila==-1 && columna==-1){
+		    out.print("<p>Selecciona una casilla valida</p>");
 		} else {
 			out.println("<p>Pagina del disparo en("+(fila+1)+","+(columna+1)+"): Ok!</p>");
 		}
@@ -60,6 +64,7 @@
 		out.println("<th>"+letra+"</th>");
 		letra++;
 	}
+	out.println("</tr>");
     for (int i = 0; i < nf; i++) {
     	out.println("<tr>");
     	out.println("<th>"+(i+1)+"</th>");
@@ -84,16 +89,17 @@
     			color = "White";
     		}
     		out.println("<th style='background-color:"+color+"'><input type='radio' name='casilla' value='"+valor+"'></th>");
+
     	}
+
     	out.println("</tr>");
-    	
-    
+
     }
-    out.println("</table>");
-    if(!over)
-    	out.println("<div>");
-    	out.println("<input type='submit' name='Enviar' value='Submit'>");
-    	out.println("</div>");
+	out.println("</table>");
+	if(!over) {
+	    out.println("<div><input type='submit' name='Enviar' value='Submit'></div>");
+	}
+
     out.println("</form>");
     out.println("<br><br><br>");
     out.println("<p><a href='SolucionPartidaServlet'>Mostrar Solucion</a></p>");

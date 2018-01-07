@@ -37,19 +37,25 @@ public class HundirFlotaServlet extends HttpServlet {
 			 System.out.println("Partida creada");
 		} else {
 			System.out.println("Casilla pulsada");
-			
-			String[] casilla = request.getParameter("casilla").split("#");
-			System.out.println(casilla);
-			int fila = Integer.parseInt(casilla[0]);
-			int columna = Integer.parseInt(casilla[1]);
-			if(partida.casillaDisparada(fila, columna)) {
-				request.setAttribute("disparada", true);
-			} else {
+			String recv = request.getParameter("casilla");
+			int fila;
+			int columna;
+			if(recv==null){
+				fila=-1;
+				columna=-1;
 				request.setAttribute("disparada", false);
-				int res = partida.pruebaCasilla(fila, columna);
-				System.out.println(res);
-				
-				
+			} else {
+				String[] casilla = recv.split("#");
+				fila = Integer.parseInt(casilla[0]);
+				columna = Integer.parseInt(casilla[1]);
+				if (partida.casillaDisparada(fila, columna)) {
+					request.setAttribute("disparada", true);
+				} else {
+					request.setAttribute("disparada", false);
+					int res = partida.pruebaCasilla(fila, columna);
+					System.out.println(res);
+				}
+
 			}
 			request.setAttribute("fila", fila);
 			request.setAttribute("columna", columna);
