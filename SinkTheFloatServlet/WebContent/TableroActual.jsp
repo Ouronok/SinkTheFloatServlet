@@ -7,19 +7,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<style>
-	table#taula{
-		height:60%;
-		width:40%;
-		border-collapse: collapse;
+	<style>
+		table{
+			text-align:center;
+			align:center;
+		}
+		td {
+			width: 50px;
+		}
 
-
-	} 
-	div{
-		text-align: center;
-
-	
-	}</style>
+		div{
+			margin-left: 200px;
+		}
+	</style>
 <body>
 <h1>Hundir la Flota</h1><br>
 
@@ -56,7 +56,7 @@
    int nc = Integer.parseInt(tamano[1]);
     
 	out.println("<form action='HundirFlotaServlet' method='GET'>");
-	out.println("<table id='taula'>");
+	out.println("<table");
 	out.println("<tr>");
 	char letra = 'A';
 	out.println("<th></th>");
@@ -88,7 +88,7 @@
     		} else{
     			color = "White";
     		}
-    		out.println("<th style='background-color:"+color+"'><input type='radio' name='casilla' value='"+valor+"'></th>");
+    		out.println("<td style='background-color:"+color+"'><input type='radio' name='casilla' value='"+valor+"'></td>");
 
     	}
 
