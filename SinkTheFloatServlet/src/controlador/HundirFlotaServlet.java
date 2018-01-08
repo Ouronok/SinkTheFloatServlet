@@ -39,11 +39,11 @@ public class HundirFlotaServlet extends HttpServlet {
 			 System.out.println("Partida creada");
 		} else {
 			System.out.println("Casilla pulsada");
-			//Solicitamos la información de la casilla pulsada
+			//Solicitamos la informaciï¿½n de la casilla pulsada
 			String recv = request.getParameter("casilla");
 			int fila;
 			int columna;
-			//En caso de error
+			//Si esta vacia
 			if(recv==null){
 				fila=-1;
 				columna=-1;

@@ -29,9 +29,9 @@ public class NuevaPartidaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession(false);
-		session.invalidate();
+		session.invalidate(); //Invalidamos la sesion, borrando todos los datos haciendo que se cree una nueva
 		RequestDispatcher rd = request.getRequestDispatcher("HundirFlotaServlet");
-		rd.forward(request,response);
+		rd.forward(request,response); //Pasamos a la nueva partida
 	}
 
 }

@@ -48,7 +48,7 @@ para selecionar casillas, sino que simplemente muestra la solución de la partida
 				letra++;
 			}
 			/*Puesto que la partida ya se encuentra guardada, simplemente mantiene el funcionamiento del tablero
-			actual, pero no solo obtenemos el color de la casilla que hemos pulsado, sino el color de todas la casillas */
+			actual, pero obteniendo el color de todas la casillas para colorear las celdas */
 			
 		    for (int i = 0; i < nf; i++) {
 		    	out.println("<tr>");

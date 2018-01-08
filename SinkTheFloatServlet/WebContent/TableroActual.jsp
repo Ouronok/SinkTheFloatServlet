@@ -28,13 +28,13 @@
 
 <%
 
-	//Solicitamos la partida que esta guardada en sesion
+	//Solicitamos la partida que esta guardada en sesion y nos ha sido enviada desde el servlet para mostrarla
 	Partida partida = (Partida) session.getAttribute("partida");
 	boolean over = false;
-	//Comprobamos que la partida acaba de ser creada
+	//Comprobamos si la partida acaba de ser creada
 	if(partida.getDisparos()==0){
 		out.println("<p>NUEVA PARTIDA</p>");
-	//Comprobamos que la partida ha finalizado
+	//Comprobamos si la partida ha finalizado
 	} else if (partida.getRestantes()==0){
 		out.println("<p>GAME OVER</p>");
 		over = true;
@@ -42,7 +42,7 @@
 		//Solicitamos la fila y la columna pulsada
 		int fila = (int) request.getAttribute("fila");
 		int columna = (int) request.getAttribute("columna");
-		//Comprobaos que no haya sido pulsada anteriormente
+		//Comprobamos que no haya sido pulsada anteriormente o que no se haya seleccionado
 		if((boolean) request.getAttribute("disparada")){
 			out.println("<p>Ya habia sido disparada anteriormente</p>");
 		} else if (fila==-1 && columna==-1){
@@ -57,7 +57,7 @@
 	
 	out.println("<p>Numero de disparos efectuados: "+partida.getDisparos()+"</p>");
 	
-   //Solicitamos el tamaÃ±o de la partida, numero columnas , numero barcos para poder crear el tablero
+   //Solicitamos el tamaño de la partida, numero columnas , numero barcos para poder crear el tablero
    String[] tamano = partida.getTamanoPartida().split("#");
    int nf = Integer.parseInt(tamano[0]);
    int nc = Integer.parseInt(tamano[1]);
@@ -67,7 +67,7 @@
 	out.println("<tr>");
 	char letra = 'A';
 	out.println("<th></th>");
-	//Creamos el tablero con las letraas en primer lugar , creando las filas y columnas correspondientes
+	//Creamos el tablero con las letras en primer lugar , creando las filas y columnas correspondientes
 	for (int i = 0; i < nc; i++) {
 		out.println("<th>"+letra+"</th>");
 		letra++;
@@ -98,7 +98,7 @@
     		} else{
     			color = "White";
     		}
-    		//Aqui es donde lo coloreamos y creamos el botÃ³n en html
+    		//Aqui es donde lo coloreamos y creamos el botón en html
     		out.println("<td style='background-color:"+color+"'><input type='radio' name='casilla' value='"+valor+"'></td>");
 
     	}

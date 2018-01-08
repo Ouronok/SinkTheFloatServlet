@@ -29,9 +29,9 @@ public class SalirPartidaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession(false);
-		session.invalidate();
+		session.invalidate(); //Borramos la partida actual invalidandola.
 		RequestDispatcher rd = request.getRequestDispatcher("index.html");
-		rd.forward(request,response);
+		rd.forward(request,response); //Pasamos a la pagina principal.
 	}
 
 }

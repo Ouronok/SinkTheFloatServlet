@@ -32,9 +32,9 @@ public class SolucionPartidaServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession(false);
 		Partida partida = (Partida) session.getAttribute("partida");
-		session.setAttribute("partida", partida);
+		session.setAttribute("partida", partida); //Cogemos la partida en curso
 		RequestDispatcher vista = request.getRequestDispatcher("TableroSolucion.jsp");
-		vista.forward(request, response);
+		vista.forward(request, response); //Pasamos al servlet de la solucion
 	}
 
 }
