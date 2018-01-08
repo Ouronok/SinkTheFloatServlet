@@ -8,6 +8,8 @@
 	<title>Solucion de hundir la flota</title>
 
 	<style>
+		/* Aliniamos el texto con CSS y el el div que contiene el submit para centrar este respecto
+		la tabla*/
 		table{
 			text-align:center;
 			align:center;
@@ -25,6 +27,9 @@
 <h1>Hundir la Flota</h1><br>
 
 <% 
+/*Se trta de un código parecido al del Tablero Actual, pero que no contiene botones ni envio 
+para selecionar casillas, sino que simplemente muestra la solución de la partida actual*/
+
 		Partida partida = (Partida) session.getAttribute("partida");
 		out.println("<p>Solucion Partida<p>");
 		out.println("<p>Barcos navegando: "+partida.getRestantes()+"<p>");
@@ -42,6 +47,9 @@
 				out.println("<th>"+letra+"</th>");
 				letra++;
 			}
+			/*Puesto que la partida ya se encuentra guardada, simplemente mantiene el funcionamiento del tablero
+			actual, pero no solo obtenemos el color de la casilla que hemos pulsado, sino el color de todas la casillas */
+			
 		    for (int i = 0; i < nf; i++) {
 		    	out.println("<tr>");
 		    	out.println("<th>"+(i+1)+"</th>");
@@ -59,6 +67,8 @@
 		    
 		    }
 		    out.println("</table>");
+		    
+		    //Aparecen menos opciones ya que una vez mostrada la solución, solo podemos crear una nueva partida o salir de esta
 		    
 		    out.println("<p><a href='NuevaPartidaServlet'>Nueva partida</a></p>");
 		    out.println("<p><a href='SalirPartidaServlet'>Salir partida </a></p>"); 
