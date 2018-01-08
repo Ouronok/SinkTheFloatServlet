@@ -31,7 +31,7 @@ public class HundirFlotaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession(true);
-		//Solicitamos la partida que se encuentra en session
+		//Solicitamos la partida que se encuentra guardada en la session
 		Partida partida = (Partida) session.getAttribute("partida");
 		//Si la partida no esta creada la creamos
 		if(partida == null) {
